@@ -1,0 +1,23 @@
+{
+  "name": "userstorydistributionbackend",
+  "version": "1.0.0",
+  "description": "Backend For User Story Distribuition",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakshan1996/userStoryDistributionBackend.git"
+  },
+  "author": "Devil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rakshan1996/userStoryDistributionBackend/issues"
+  },
+  "homepage": "https://github.com/rakshan1996/userStoryDistributionBackend#readme",
+  "dependencies": {
+    "mongodb": "^3.1.13"
+  }
+}

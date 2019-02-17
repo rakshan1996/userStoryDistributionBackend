@@ -1,39 +1,34 @@
+/* Library Imports*/
 var express= require('express');
-var mongoose=require('mongoose');
+var bodyParser=require('body-parser');
 
-mongoose.Promise=global.Promise;
-mongoose.connect('mongodb://localhost:27017/UserStoryDistribution');
+/* Local Imports*/
+var {mongoose}=require('./dbConnectionProperties');
+var {story}=require('./models/UserStories');
 
-var story = mongoose.model('UserStories',{
-Type:{
-    type:String
-},
-Criticality:{
-    type:String
-},
-Env:{
-    type:String
-},
-description:{
-    type:String
-},
-status:{
-    type:String
-}
-});
+/*variable declaration*/
 
-var story=new story({
-    Type: "feature",
-    Criticality: "moderate",
-    Env: "dev",
-    description:"Add the Drag and Drop Feature For Stories",
-    status:"enque"
+var app=express();
+app.use(bodyParser.json());
+/*Story Creation*/
 
-});
+app.post('/newStory',(req,res)=>{
+    var Story=new  story({
+         Type:req.body.Type,
+         Criticality: req.body.criticality,
+         Env:req.body.Env,
+         description:req.body.description,
+         status:req.body.status
+    });
 
-story.save().then((doc)=>{
-console.log("Story Saved",doc)
+    Story.save().then((doc)=>{
+        res.send(doc);
+    },(e)=>{
+        res.status(400).send(e)
+    });
 
-},(e)=>{
-    console.log("unable to save story");
+})
+
+app.listen(3000,()=>{
+    console.log('Started on Port 3000');
 });

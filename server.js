@@ -27,6 +27,16 @@ app.post('/newStory',(req,res)=>{
         res.status(400).send(e)
     });
 
+});
+
+
+/* Get Api*/
+app.get('/story',(req,res)=>{
+    story.find().then((stories)=>{
+        res.send({stories});
+    },(e)=>{
+        res.status(400).send(e);
+    })
 })
 
 app.listen(3000,()=>{

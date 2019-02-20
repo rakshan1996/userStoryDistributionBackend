@@ -1,8 +1,7 @@
 var mongoose=require('mongoose');
 var story = mongoose.model('UserStories',{
     Type:{
-        type:String,
-        required: true
+        type:String
     },
     Criticality:{
         type:String
@@ -12,7 +11,6 @@ var story = mongoose.model('UserStories',{
     },
     description:{
         type:String,
-        required: true,
         minlength:10
     },
     status:{

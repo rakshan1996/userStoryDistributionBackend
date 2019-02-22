@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 /*Story Creation*/
 
 app.post('/newStory',(req,res)=>{
-    console.log(req.body);
+    console.log(req);
     
     var Story=new  story({
          Type:req.body.feature,
@@ -29,12 +29,12 @@ app.post('/newStory',(req,res)=>{
          status:req.body.status
     });
     console.log(Story);
-    Story.save().then((doc)=>{
+   /*  Story.save().then((doc)=>{
         res.send(doc);
     },(e)=>{
         res.status(400).send(e)
     });
-
+ */
 });
 
 
